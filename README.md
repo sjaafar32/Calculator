@@ -1,0 +1,1 @@
+This is my calculator project as part of the Odin Project cirriculum.
