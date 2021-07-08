@@ -1,0 +1,19 @@
+.number-button {
+    width: 50px;
+    height: 50px;
+}
+
+.operator-button {
+    width: 50px;
+    height: 50px;
+}
+
+.display {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 250px;
+    height: 50px;
+    border-color: black;
+    border-style: solid;
+}

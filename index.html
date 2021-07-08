@@ -3,10 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
+    <link href="style.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
+    <script src="script.js" defer></script>
     <main>
-
+        <div>
+            <button class="number-button">0</button>
+            <button class="number-button" type="submit">1</button>
+            <button class="number-button">2</button>
+            <button class="number-button">3</button>
+            <button class="number-button">4</button>
+            <button class="number-button">5</button>
+            <button class="number-button">6</button>
+            <button class="number-button">7</button>
+            <button class="number-button">8</button>
+            <button class="number-button">9</button>
+        </div>
+        <div>
+            <button class="operator-button">+</button>
+            <button class="operator-button">-</button>
+            <button class="operator-button">*</button>
+            <button class="operator-button">/</button>
+            <button id='clear-button' class="operator-button">clear</button>
+            <button id='equal-button' class="operator-button">=</button>
+        </div>
+        <p class="display"></p>
     </main>
 </body>
 </html>
