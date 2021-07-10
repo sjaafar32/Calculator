@@ -14,23 +14,23 @@ function multiply(x, y){ return x * y;}
 
 function divide(x, y){ return x/y;}
 
-function operator(answer){ 
-    if(op = '+'){ return add(x, y);}
-    else if(op = '-'){ return subtract(x, y);}
-    else if(op = '*'){ return multiply(x, y);}
-    else if(op = '/'){ return divide(x, y);}
+function operator(numArray, operatorArray){
+    let answer = parseInt(numArray[0], 10);
+    for(i = 1; i < numArray.length; i++){
+        if(operatorArray[i-1] == '+'){ answer = add(answer, parseInt(numArray[i]), 10);}
+        else if(operatorArray[i-1] == '-'){ answer = subtract(answer, parseInt(numArray[i], 10));}
+        else if(operatorArray[i-1] == '*'){ answer = multiply(answer, parseInt(numArray[i], 10));}
+        else if(operatorArray[i-1] == '/'){ answer = divide(answer, parseInt(numArray[i], 10));}
+    }
+    console.log(answer);
 }
-
-clearBtn.addEventListener('click', () => {
-    displayText.textContent = "";
-});
 
 let numBtnsArray = Array.from(numBtns);
 
 for(let i = 0; i<numBtnsArray.length; i++){
     numBtnsArray[i].addEventListener('click', () =>{
         displayText.textContent += numBtnsArray[i].textContent;
-        console.log(displayText);
+        numInput(numBtnsArray[i].textContent);
     });
 }
 
@@ -38,18 +38,31 @@ let operatorArray = Array.from(operatorBtns); //operatorBtns is a node list and 
 
 for(let i = 0; i<operatorArray.length-2; i++){ //subracted 2 so that the word equal and clear dont show when pressed
     operatorArray[i].addEventListener('click', () =>{
-        console.log(operatorArray[i]);
         displayText.textContent += operatorArray[i].textContent;
-        console.log(displayText);
+        operatorInput(operatorArray[i].textContent);
     });
+}
+
+let numInputArray = []; //create array of number inputs so that I can use each element in opreator function
+let operatorInputArray = [];
+
+function numInput(x){
+    numInputArray.push(x);
+    console.log(numInputArray);
+}
+
+function operatorInput(y){
+    operatorInputArray.push(y);
+    console.log(operatorInputArray);
 }
 
 equalBtn.addEventListener('click', () =>{
     console.log(displayText.textContent);
-    
+    operator(numInputArray, operatorInputArray);
 });
 
-
-console.log(operatorArray.length);
-console.log(operatorArray[2].textContent);
-
+clearBtn.addEventListener('click', () => {
+    displayText.textContent = "";
+    numInputArray = [];
+    operatorInputArray = [];
+});
