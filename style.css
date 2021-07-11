@@ -1,11 +1,19 @@
+body {
+    background-color: rgb(219, 218, 218);
+}
+
 .number-button {
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
+    border-radius: 15px;
+    font-size: 30px;
 }
 
 .operator-button {
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
+    border-radius: 15px;
+    font-size: 25px;
 }
 
 .display {
@@ -14,8 +22,21 @@
     justify-content: flex-end;
     padding-right: 10px;
     font-size: 25px;
-    width: 250px;
-    height: 50px;
+    width: 320px;
+    height: 100px;
     border-color: black;
     border-style: solid;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+.container {
+    width: 400px;
+    height: 600px;
+    border-style: solid;
+    margin: auto;
+    border-radius: 20px;
+    background-color: rgb(174, 173, 247);
 }
