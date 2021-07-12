@@ -19,7 +19,9 @@ for(let i = 0; i<numBtnsArray.length; i++){
 }
 
 function numInput(){
+    if(newNum !== ''){ //This is so an empty string isn't added when an operator is clicked after equal sign
     input(newNum);
+    }
     newNum = ''; //New num is reset so that the previous digits selected aren't included in the next number
 }
 
@@ -52,10 +54,16 @@ clearBtn.addEventListener('click', () => {
 });
 
 deleteBtn.addEventListener('click', () => {
-    numInput();
-    let deleteString = inputArray.pop();
+    if(newNum !== ''){numInput();} /* Calls numInput() so that previously entered newNum is added to the array.
+    This is done so that we have the value in the array and can remove the previous digit or operator.
+    Only calls the numInput() if newNum does not have an empty string. Had this if statement not been here, 
+    an empty string would be added if the delete button was hit more than once consecutively.*/
+
+    let deleteString = inputArray.pop(); // This takes the last element so we can remove the last typed symbol
     let length = deleteString.length;
-    inputArray.push(deleteString.slice(0, length-1));
+    let newElement = deleteString.slice(0, length-1); //This keeps every part of the string from the first point to the second to last. 
+    if(newElement == ''){inputArray = inputArray}
+    else{inputArray.push(newElement);}
     console.log(inputArray);
     displayText.textContent = '';
     for(i = 0; i < inputArray.length; i++){
@@ -91,6 +99,5 @@ function operator(array){
         //Determines the operator then calls the appropriate function
         }
     }
-   
-    
+  inputArray = [answer]; // This is so user can continue entering values after clicking equal key
 }
