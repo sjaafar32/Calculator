@@ -99,5 +99,5 @@ function operator(array){
         //Determines the operator then calls the appropriate function
         }
     }
-  inputArray = [answer]; // This is so user can continue entering values after clicking equal key
+  inputArray = [answer.toString()]; // This is so user can continue entering values after clicking equal key
 }
