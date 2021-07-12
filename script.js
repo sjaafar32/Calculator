@@ -4,6 +4,7 @@ const clearBtn = document.getElementById('clear-button');
 const numBtns = document.querySelectorAll('button.number-button');
 const operatorBtns = document.querySelectorAll('button.operator-button');
 const equalBtn = document.getElementById('equal-button');
+const deleteBtn = document.getElementById('del-button');
 
 
 let numBtnsArray = Array.from(numBtns); //creates an array from node list so that I can utilize individual elements
@@ -50,6 +51,18 @@ clearBtn.addEventListener('click', () => {
     inputArray = [];
 });
 
+deleteBtn.addEventListener('click', () => {
+    numInput();
+    let deleteString = inputArray.pop();
+    let length = deleteString.length;
+    inputArray.push(deleteString.slice(0, length-1));
+    console.log(inputArray);
+    displayText.textContent = '';
+    for(i = 0; i < inputArray.length; i++){
+        displayText.textContent += inputArray[i];
+    }
+});
+
 function add(x, y){ return x + y;}
 
 function subtract(x, y){ return x - y;}
@@ -63,19 +76,21 @@ function operator(array){
 
     for(i = 1; i < array.length; i++){
         if(i % 2 !== 0){
-        if(array[i] == '+'){ answer = add(answer, parseFloat(array[i+1], 10));}
-        else if(array[i] == '-'){ answer = subtract(answer, parseFloat(array[i+1], 10));}
-        else if(array[i] == 'x'){ answer = multiply(answer, parseFloat(array[i+1], 10));}
+        if(array[i] == '+'){ answer = add(answer, parseFloat(array[i+1], 10)); displayText.textContent = parseFloat(answer.toFixed(5));}
+        else if(array[i] == '-'){ answer = subtract(answer, parseFloat(array[i+1], 10)); displayText.textContent = parseFloat(answer.toFixed(5));}
+        else if(array[i] == 'x'){ answer = multiply(answer, parseFloat(array[i+1], 10)); displayText.textContent = parseFloat(answer.toFixed(5));}
         else if(array[i] == '/'){ 
             if(array[i+1] == 0){ 
-                alert("Nice try! You cannot divide by zero. Clear and try again");
-                displayText.textContent = "";
+                array = [];
+                displayText.textContent = "Nice try! You cannot divide by zero";
                 inputArray = [];
                 console.log(`Nice try! You cannot divide by zero`);} 
-                else{answer = divide(answer, parseFloat(array[i+1], 10));}}
+                else if(array[i+1] !== 0){answer = divide(answer, parseFloat(array[i+1], 10)); displayText.textContent = parseFloat(answer.toFixed(5))
+                    ;}
+            }
         //Determines the operator then calls the appropriate function
         }
     }
-    console.log(answer);
-    displayText.textContent = answer;
+   
+    
 }
