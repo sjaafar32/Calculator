@@ -47,6 +47,7 @@ main {
     border-radius: 15px;
     border-style: none;
     font-size: 30px;
+    background-color: white;
 }
 
 .operator-button {
@@ -55,24 +56,26 @@ main {
     border-radius: 15px;
     font-size: 25px;
     border-style: none;
+    background-color: white;
 }
 
 .num-operator-container{
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-left: .6rem;
     display: grid;
     grid-template-columns: repeat(4, 85px);
     grid-template-rows: repeat(4, 85px);
 }
 
 button:hover{
-    background-color: rgb(221, 220, 220);
+    background-color: rgb(230, 230, 230);
+    scal
 }
 
 #clear-button{
     width: 160px;
-    margin-right: .6rem;
+    margin-right: .7rem;
 }
 
 #del-button{
@@ -83,6 +86,5 @@ button:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: .6rem;
     margin-top: .35rem;
 }
