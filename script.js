@@ -23,6 +23,9 @@ function numInput(){
     input(newNum);
     }
     newNum = ''; //New num is reset so that the previous digits selected aren't included in the next number
+    let repeatNum = inputArray[inputArray.length-2];
+    if(inputArray.length % 2 == 0){ inputArray.push(repeatNum);} //If last element is an operator, it will push a new element same as the one before operator
+    console.log(inputArray);
 }
 
 let operatorBtnsArray = Array.from(operatorBtns); //operatorBtns is a node list and needs to be converted to an array
@@ -81,16 +84,21 @@ function divide(x, y){ return x/y;}
 
 function operator(array){
     let answer = parseFloat(array[0], 10);
-
     for(i = 1; i < array.length; i++){
         if(i % 2 !== 0){
-        if(array[i] == '+'){ answer = add(answer, parseFloat(array[i+1], 10)); displayText.textContent = parseFloat(answer.toFixed(5));}
-        else if(array[i] == '-'){ answer = subtract(answer, parseFloat(array[i+1], 10)); displayText.textContent = parseFloat(answer.toFixed(5));}
-        else if(array[i] == 'x'){ answer = multiply(answer, parseFloat(array[i+1], 10)); displayText.textContent = parseFloat(answer.toFixed(5));}
+        if(array[i] == '+'){ answer = add(answer, parseFloat(array[i+1], 10));
+            displayText.textContent = parseFloat(answer.toFixed(5));}
+
+        else if(array[i] == '-'){ answer = subtract(answer, parseFloat(array[i+1], 10));
+            displayText.textContent = parseFloat(answer.toFixed(5));}
+
+        else if(array[i] == 'x'){ answer = multiply(answer, parseFloat(array[i+1], 10));
+            displayText.textContent = parseFloat(answer.toFixed(5));}
+            
         else if(array[i] == '/'){ 
             if(array[i+1] == 0){ 
                 array = [];
-                displayText.textContent = "Nice try! You cannot divide by zero";
+                displayText.textContent = "Nice try! Cant divide by zero";
                 inputArray = [];
                 console.log(`Nice try! You cannot divide by zero`);} 
                 else if(array[i+1] !== 0){answer = divide(answer, parseFloat(array[i+1], 10)); displayText.textContent = parseFloat(answer.toFixed(5))
